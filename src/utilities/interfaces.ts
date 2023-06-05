@@ -13,7 +13,7 @@ interface IParameters {
 	localPos: IVector2;
 	lastPos: IVector2;
 	//
-	direction: {x : 1 | -1 , y : 1 | -1}
+	direction: IVector2
 	//
 	seedPos: IVector2;
 	allowSeed: { x: boolean; y: boolean };
