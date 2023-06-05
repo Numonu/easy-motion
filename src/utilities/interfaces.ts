@@ -16,5 +16,5 @@ interface IParameters{
     direction :IVector2,
     //
     seedPos : IVector2,
-    allowSeed : IVector2
+    allowSeed : {x:boolean , y:boolean}
 }
