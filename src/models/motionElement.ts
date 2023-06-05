@@ -1,4 +1,4 @@
-import { executeForAxis, getDefaults } from "../lib/motionTools";
+import { executeForAxis, getDefaults, keepInLimits } from "../lib/motionTools";
 import { defaultOptions, defaultParameters } from "../utilities/defaults";
 
 class MotionElement{
@@ -23,6 +23,11 @@ class MotionElement{
                 this.parameters.allowSeed[axis] = false;
             }
         });
+        //
+        this.movement({
+            x : mousePos.x - this.parameters.seedPos.x , 
+            y : mousePos.y - this.parameters.seedPos.y
+        });
         this.setDirection(mousePos);
         //
         this.parameters.lastPos = {...mousePos};
@@ -38,6 +43,13 @@ class MotionElement{
                 if (this.parameters.direction[axis] == 1) this.parameters.allowSeed[axis] = true;
                 this.parameters.direction[axis] = -1;
             }
+        })
+    }
+    movement(translate:IVector2){
+        executeForAxis((axis:TAxis) => {
+            this.parameters.localPos[axis] = 
+                keepInLimits(this.parameters.localPos[axis] + keepInLimits(translate.x,this.options.maxSpeed[axis]) , this.options.moveLimits.x);
+            this.target.style.left = `${this.parameters.localPos[axis] * this.options.aceleration[axis]}px`;
         })
     }
 }
