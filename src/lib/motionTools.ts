@@ -13,4 +13,8 @@ const executeForAxis = (callback:Function):void => {
 	})
 }
 
-export { getDefaults , executeForAxis};
+const keepInLimits = (target:number , limits:number):number => {
+	return Math.max(Math.min(target , limits) , -limits);
+}
+
+export { getDefaults , executeForAxis , keepInLimits};
