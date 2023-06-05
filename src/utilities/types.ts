@@ -1,0 +1,1 @@
+type TAxis = "x" | "y";
