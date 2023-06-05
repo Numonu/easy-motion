@@ -13,6 +13,30 @@ const defaultOptions:IOptions = {
     }
 }
 
+const defaultParameters:IParameters = {
+    allowSeed : {
+        x:true,
+        y:true
+    },
+    direction : {
+        x : 0,
+        y: 0,
+    },
+    lastPos : {
+        x : 0,
+        y : 0
+    },
+    localPos : {
+        x : 0,
+        y : 0,
+    },
+    seedPos : {
+        x : 0,
+        y: 0
+    }
+}
+
 export {
-    defaultOptions
+    defaultOptions,
+    defaultParameters
 }
