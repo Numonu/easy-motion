@@ -1,4 +1,4 @@
-import { getDefaults } from "../lib/motionTools";
+import { executeForAxis, getDefaults } from "../lib/motionTools";
 import { defaultOptions, defaultParameters } from "../utilities/defaults";
 
 class MotionElement{
@@ -17,38 +17,27 @@ class MotionElement{
             y : e.clientY,
         }
         //
-        if (this.parameters.allowSeed.x) {
-            this.parameters.seedPos.x = mousePos.x;
-            this.parameters.allowSeed.x = false;
-        }
-        if (this.parameters.allowSeed.y) {
-            this.parameters.seedPos.y = mousePos.y;
-            this.parameters.allowSeed.y = false;
-        }
-        //
+        executeForAxis((axis: TAxis) => {
+            if (this.parameters.allowSeed[axis]) {
+                this.parameters.seedPos[axis] = mousePos[axis];
+                this.parameters.allowSeed[axis] = false;
+            }
+        });
         this.setDirection(mousePos);
         //
         this.parameters.lastPos = {...mousePos};
     }
     setDirection(_mousePos:IVector2){
         const sensibility = 3;
-        //Axe-x
-        if (_mousePos.x >= this.parameters.lastPos.x + sensibility) {
-            if (this.parameters.direction.x == -1) this.parameters.allowSeed.x = true;
-            this.parameters.direction.x = 1;
-        }
-        else if (_mousePos.x <= this.parameters.lastPos.x - sensibility) {
-            if (this.parameters.direction.x == 1) this.parameters.allowSeed.x = true;
-            this.parameters.direction.x = -1;
-        }
-        //Axe-y
-        if (_mousePos.y >= this.parameters.lastPos.y + sensibility) {
-            if (this.parameters.direction.y == -1) this.parameters.allowSeed.y = true;
-            this.parameters.direction.y = 1;
-        }
-        else if (_mousePos.y <= this.parameters.lastPos.y - sensibility) {
-            if (this.parameters.direction.y == 1) this.parameters.allowSeed.y = true;
-            this.parameters.direction.y = -1;
-        }
+        executeForAxis((axis:TAxis) => {
+            if (_mousePos[axis] >= this.parameters.lastPos[axis] + sensibility) {
+                if (this.parameters.direction[axis] == -1) this.parameters.allowSeed[axis] = true;
+                this.parameters.direction[axis] = 1;
+            }
+            else if (_mousePos[axis] <= this.parameters.lastPos[axis] - sensibility) {
+                if (this.parameters.direction[axis] == 1) this.parameters.allowSeed[axis] = true;
+                this.parameters.direction[axis] = -1;
+            }
+        })
     }
 }
