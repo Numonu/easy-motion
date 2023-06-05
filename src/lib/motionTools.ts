@@ -7,4 +7,10 @@ const getDefaults = (target: IOptions, fallback: IOptions): IOptions => {
 	return result;
 };
 
-export { getDefaults };
+const executeForAxis = (callback:Function):void => {
+	["x","y"].forEach((axis) => {
+		callback(axis);
+	})
+}
+
+export { getDefaults , executeForAxis};
