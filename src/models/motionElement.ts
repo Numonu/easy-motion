@@ -9,6 +9,26 @@ class MotionElement{
         this.target = target;
         this.options = options ? getDefaults(options , defaultOptions) : defaultOptions;
         this.parameters = defaultParameters;
+        window.addEventListener("mousemove" , e => this.update(e))
+    }
+    update(e:any):void{
+        const mousePos:IVector2 = {
+            x : e.clientX,
+            y : e.clientY,
+        }
+        //
+        if (this.parameters.allowSeed.x) {
+            this.parameters.seedPos.x = mousePos.x;
+            this.parameters.allowSeed.x = false;
+        }
+        if (this.parameters.allowSeed.y) {
+            this.parameters.seedPos.y = mousePos.y;
+            this.parameters.allowSeed.y = false;
+        }
+        //
+        this.setDirection(mousePos);
+        //
+        this.parameters.lastPos = {...mousePos};
     }
     setDirection(_mousePos:IVector2){
         const sensibility = 3;
