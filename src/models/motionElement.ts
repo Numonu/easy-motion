@@ -33,13 +33,12 @@ export class MotionElement{
         this.parameters.lastPos = {...mousePos};
     }
     setDirection(_mousePos:IVector2){
-        const sensibility = 3;
         executeForAxis((axis:TAxis) => {
-            if (_mousePos[axis] >= this.parameters.lastPos[axis] + sensibility) {
+            if (_mousePos[axis] >= this.parameters.lastPos[axis] + this.options.threshold[axis]) {
                 if (this.parameters.direction[axis] == -1) this.parameters.allowSeed[axis] = true;
                 this.parameters.direction[axis] = 1;
             }
-            else if (_mousePos[axis] <= this.parameters.lastPos[axis] - sensibility) {
+            else if (_mousePos[axis] <= this.parameters.lastPos[axis] - this.options.threshold[axis]) {
                 if (this.parameters.direction[axis] == 1) this.parameters.allowSeed[axis] = true;
                 this.parameters.direction[axis] = -1;
             }
