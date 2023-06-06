@@ -4,7 +4,6 @@ interface IVector2 {
 }
 
 interface IOptions {
-	aceleration: IVector2;
 	maxSpeed: IVector2;
 	moveLimits: IVector2;
 }
