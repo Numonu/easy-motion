@@ -21,7 +21,6 @@
 
 - 🔥 **Hot by default**
 - 🔩 **Easily Customizable**
-- ⏳ **Promise API** - _Automatic loader from a promise_
 - ✅ **Accessible**
 
 ## Installation
@@ -34,7 +33,7 @@ npm install easy-motion
 
 ## Getting Started
 
-Add the Toaster to your app first. It will take care of rendering all notifications emitted. Now you can trigger `toast()` from anywhere!
+It's simple, just import the `EasyElement` object and enter as a parameter the dom element you want to animate, that's it!
 
 ```js
 import MotionElement from 'easy-motion';
