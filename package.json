@@ -16,7 +16,6 @@
   "main": "dist/index.js",
   "files": [
     "dist/",
-    "examples/",
     "package.json",
     "README.md"
   ],
