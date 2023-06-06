@@ -1,7 +1,7 @@
 import { executeForAxis, getDefaults, keepInLimits } from "../lib/motionTools";
 import { defaultOptions, defaultParameters } from "../utilities/defaults";
 
-class MotionElement{
+export class MotionElement{
     target:HTMLElement
     options:IOptions
     parameters:IParameters
