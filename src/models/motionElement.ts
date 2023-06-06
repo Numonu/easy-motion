@@ -45,11 +45,13 @@ class MotionElement{
             }
         })
     }
-    movement(translate:IVector2){
+    movement(diference:IVector2){
         executeForAxis((axis:TAxis) => {
-            this.parameters.localPos[axis] = 
-                keepInLimits(this.parameters.localPos[axis] + keepInLimits(translate.x,this.options.maxSpeed[axis]) , this.options.moveLimits.x);
-            this.target.style.left = `${this.parameters.localPos[axis] * this.options.aceleration[axis]}px`;
-        })
+            const translate:number = this.parameters.localPos[axis] + keepInLimits(diference[axis], this.options.maxSpeed[axis]);
+            this.parameters.localPos[axis] = keepInLimits(translate, this.options.moveLimits[axis]);
+        });
+        this.target.style.transform = 
+            `translateX(${this.parameters.localPos.x * 0.1}px)
+            translateY(${this.parameters.localPos.y * 0.1}px)`;
     }
 }
