@@ -4,6 +4,7 @@ interface IVector2 {
 }
 
 interface IOptions {
+	threshold : IVector2;
 	maxSpeed: IVector2;
 	moveLimits: IVector2;
 }

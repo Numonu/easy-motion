@@ -1,4 +1,8 @@
 const defaultOptions:IOptions = {
+    threshold : {
+        x : 1,
+        y : 1
+    },
     maxSpeed : {
         x : Infinity,
         y: Infinity,
