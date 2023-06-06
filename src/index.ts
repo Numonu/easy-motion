@@ -1,5 +1,5 @@
 import { MotionElement } from "./models/motionElement";
 
-export{
+export default{
     MotionElement
 }
